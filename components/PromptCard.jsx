@@ -8,6 +8,7 @@ import { usePathname , useRouter } from 'next/navigation';
 const PromptCard = ({prompt , handleTagClick , handleEdit , handleDelete}) => {
 
   //console.log("PromptCard prompt=",prompt);
+  //console.log("handleTagClick=",handleTagClick)
 
   const [copied, setCopied] = useState("")
   const pathName = usePathname();
@@ -18,12 +19,23 @@ const PromptCard = ({prompt , handleTagClick , handleEdit , handleDelete}) => {
     setCopied(prompt.prompt);
     navigator.clipboard.writeText(prompt.prompt);
     setTimeout( () => setCopied("") , 3000 );
+
+    
+  }
+
+  const handleProfileOthers = () => {
+      //console.log("handleProfileOthers prompt.creator=",prompt.creator);
+      if (prompt.creator._id === session?.user.id) return router.push("/profile");
+      router.push(`/profile-others?id=${prompt.creator._id}&userName=${prompt.creator.username}`);
   }
 
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer"> 
+        <div 
+          className="flex-1 flex justify-start items-center gap-3 cursor-pointer"
+          onClick={handleProfileOthers}
+        > 
           <Image 
               src={prompt.creator.image}
               alt="user image"

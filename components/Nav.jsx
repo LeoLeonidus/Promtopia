@@ -14,7 +14,8 @@ const Nav = () => {
     const [providers,setProviders] = useState(null)
 
     const [toggleDropDown , setToggleDropDown] = useState(false)
- 
+
+    
    useEffect(  () => {
         const fetchProviders = async () => {
             const response = await getProviders();
@@ -23,7 +24,7 @@ const Nav = () => {
         }
         
         fetchProviders();
-   } , [])
+   } , []);
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
@@ -36,6 +37,10 @@ const Nav = () => {
                 className="object-contain"
             />
             <p className="logo_text">Promptopia</p>
+        </Link>
+
+        <Link href="/example">
+            Example
         </Link>
 
         { console.log("providers=",providers)}
