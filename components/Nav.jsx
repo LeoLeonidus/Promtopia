@@ -72,16 +72,38 @@ const Nav = () => {
                 </div>
             ) : (
                 <>
-                    { providers && Object.values(providers).map( provider => (
+                    { providers && Object.values(providers).map( provider => {
+                        let imgSrc;
+                        let imgAlt;
+                        if (provider.id === "google") {
+                            imgSrc = "btn_google.png";
+                            imgAlt = "Google"
+                        } else {
+                            imgSrc = "btn_github.png"
+                            imgAlt = "GitHub"
+                        }
+
+                            return (
                                 <button
                                     type="button"
-                                    key={provider.name}
+                                    key={provider.id}
                                     onClick={ () => signIn(provider.id)}
-                                    className="black_btn mr-2"
+                                    // className="black_btn mr-2"
+                                    className="mr-3"
                                 >
-                                    Sign In {provider.name}
+                                    {/* <img src={`/assets/images/${imgSrc}`}
+                                        alt={imgAlt} ></img> */}
+                                        <Image 
+                                            src={`/assets/images/${imgSrc}`}
+                                            alt={imgAlt}
+                                            width={200}
+                                            height={100}
+                                            className="object-contain"
+                                        />
                                 </button>
                                 )
+                        
+                        }
                     )}
                 </>
             )}
@@ -132,16 +154,38 @@ const Nav = () => {
                 </div>
             ) : (
                 <>
-                    { providers && Object.values(providers).map( provider => (
+                    { providers && Object.values(providers).map( provider => {
+                        let imgSrc;
+                        let imgAlt;
+                        if (provider.id === "google") {
+                            imgSrc = "btn_google.png";
+                            imgAlt = "Google"
+                        } else {
+                            imgSrc = "btn_github.png"
+                            imgAlt = "GitHub"
+                        }
+
+                            return (
                                 <button
                                     type="button"
-                                    key={provider.name}
+                                    key={provider.id}
                                     onClick={ () => signIn(provider.id)}
-                                    className="black_btn"
+                                    // className="black_btn mr-2"
+                                    className="mr-3"
                                 >
-                                    Sign In {provider.name}
+                                    {/* <img src={`/assets/images/${imgSrc}`}
+                                        alt={imgAlt} ></img> */}
+                                        <Image 
+                                            src={`/assets/images/${imgSrc}`}
+                                            alt={imgAlt}
+                                            width={200}
+                                            height={100}
+                                            className="object-contain"
+                                        />
                                 </button>
                                 )
+                        
+                        }
                     )}
                 </>
             )}
