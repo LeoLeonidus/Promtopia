@@ -73,7 +73,8 @@ const handler = NextAuth({
                 console.log("connectToDB KO ! error=",err);
                 return false;
             }
-        }
+        },
+         
     }
     
 })
